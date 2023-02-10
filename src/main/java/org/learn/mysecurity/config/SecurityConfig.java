@@ -53,6 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user/login").anonymous()
                 // 除了上面的url 全部需要认证
                 .anyRequest().authenticated();
+
         // 添加过滤器
         httpSecurity.addFilterAfter(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
         // 认证或授权失败异常处理
@@ -62,12 +63,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.cors();
     }
 
+
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
-
-
 
 }

@@ -17,4 +17,15 @@ public class HelloController {
         return "hello";
     }
 
+    /**
+     * 测试自定义权限控制
+     * @return
+     */
+    @RequestMapping(value = "/hello/customization")
+    @PreAuthorize("@wqg.hasAuthority('wqg')")
+    public String hello1() {
+        return "hello by customization ";
+    }
+
+
 }
